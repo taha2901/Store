@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store/model/product_model.dart';
 import 'package:store/screens/update_product_page.dart';
-// import 'package:store/screens/update_product_page.dart';
 
 class CustomCard extends StatelessWidget {
    CustomCard({
@@ -19,14 +18,12 @@ ProductModel productt;
         clipBehavior: Clip.none,
         children: [
           Container(
-            // height: 130,
-            // width: 220,
             decoration: BoxDecoration(boxShadow: [
               BoxShadow(
                   blurRadius: 40,
                   color: Colors.grey.withOpacity(0.1),
                   spreadRadius: 0,
-                  offset: Offset(10, 10))
+                  offset: const Offset(10, 10))
             ]),
             child: Card(
               elevation: 10,
@@ -39,9 +36,9 @@ ProductModel productt;
                   children: [
                     Text(
                       productt.title.substring(0,6),
-                      style: TextStyle(color: Colors.grey, fontSize: 16),
+                      style: const TextStyle(color: Colors.grey, fontSize: 16),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 3,
                     ),
                     Row(
@@ -51,7 +48,7 @@ ProductModel productt;
                           r'$' '${productt.price.toString()}',
                           style: TextStyle(fontSize: 16),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.favorite,
                           color: Colors.red,
                         ),

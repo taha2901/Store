@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:store/components/custom_text_field.dart';
 import 'package:store/model/product_model.dart';
-import 'package:store/screens/custom_buttom.dart';
+import 'package:store/components/custom_buttom.dart';
 import 'package:store/services/update_product.dart';
 
 class UpdateProductPage extends StatefulWidget {
@@ -28,7 +28,7 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
       inAsyncCall: isLoading!,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             "Update Product",
             style: TextStyle(
               color: Colors.black,
@@ -43,7 +43,7 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 100,
                 ),
                 CustomField(
@@ -52,7 +52,7 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
                   },
                   hint: "Product Name",
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 CustomField(
@@ -61,7 +61,7 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
                   },
                   hint: "Desciption",
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 CustomField(
@@ -71,7 +71,7 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
                   inputType: TextInputType.number,
                   hint: "Price",
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 CustomField(
@@ -80,18 +80,18 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
                   },
                   hint: "Image",
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 CustomButton(
                   text: "Update",
                   color: Colors.blue,
                   colorText: Colors.white,
-                  onTap: () {
+                  onTap: () async {
                     isLoading = true;   
                     setState(() {});
                     try {
-                      updateProduct(productt);
+                      await updateProduct(productt);
                       print('success');
                     } on Exception catch (e) {
                       print(e.toString());
@@ -108,8 +108,8 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
     );
   }
 
-  void updateProduct(ProductModel productt) {
-    UpdateProductService().updateProduct(
+  Future<void> updateProduct(ProductModel productt) async {
+    await UpdateProductService().updateProduct(
       id: productt.id,
         title: productName==null?productt.title : productName!,
         price: price==null?productt.price.toString():price!,

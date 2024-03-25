@@ -10,7 +10,7 @@ class UpdateProductService {
       required int id,
       required String category}) async {
     print('update id = $id');
-    Map<String, dynamic> data =
+    List<dynamic> data = //Map<String, dynamic>
         await Api().put(url: 'https://fakestoreapi.com/products/$id', body: {
       'title': title,
       'price': price,

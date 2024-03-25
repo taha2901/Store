@@ -9,10 +9,10 @@ class CustomField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: TextField(
+      child: TextFormField(
         obscureText: obsecure!,
         keyboardType: inputType,
-        // validator: (data) {
+        // validator: (data) { // 
         //   if (data!.isEmpty) {
         //     return "Value Is Wrong";
         //   }
@@ -22,11 +22,11 @@ class CustomField extends StatelessWidget {
           hintText: hint,
           hintStyle: const TextStyle(),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(),
+            borderSide: const BorderSide(),
             borderRadius: BorderRadius.circular(8),
           ),
           border: OutlineInputBorder(
-            borderSide: BorderSide(),
+            borderSide: const BorderSide(),
             borderRadius: BorderRadius.circular(8),
           ),
         ),
